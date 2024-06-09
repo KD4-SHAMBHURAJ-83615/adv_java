@@ -9,4 +9,54 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+   <servlet>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>com.sunbeam.servlets.LoginServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>Login</servlet-name>
+      <url-pattern>/login</url-pattern>
+   </servlet-mapping>
+   
+   
+   <servlet>
+    <servlet-name>Candidate</servlet-name>
+    <servlet-class>com.sunbeam.servlets.CandidateListServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+     <servlet-name>Candidate</servlet-name>
+     <url-pattern>/candlist</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+    <servlet-name>Vote</servlet-name>
+    <servlet-class>com.sunbeam.servlets.VoteServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+     <servlet-name>Vote</servlet-name>
+     <url-pattern>/vote</url-pattern>
+   </servlet-mapping>
+   
+   
+    <servlet>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>com.sunbeam.servlets.LogoutServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+     <servlet-name>Logout</servlet-name>
+     <url-pattern>/logout</url-pattern>
+   </servlet-mapping>
+   
+   
+   <servlet>
+     <servlet-name>Nomine</servlet-name>
+     <servlet-class>com.sunbeam.servlets.NomineListServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+     <servlet-name>Nomine</servlet-name>
+     <url-pattern>/nomine</url-pattern>
+   </servlet-mapping>
+   
+   
 </web-app>
