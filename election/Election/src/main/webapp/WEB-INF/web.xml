@@ -59,4 +59,18 @@
    </servlet-mapping>
    
    
+   <servlet>
+     <servlet-name>Result</servlet-name>
+     <servlet-class>com.sunbeam.servlets.ResultServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+    <servlet-name>Result</servlet-name>
+    <url-pattern>/result</url-pattern>
+   </servlet-mapping>
+   
+   <context-param>
+    <param-name>AppTitle</param-name>
+    <param-value>Shamal - Voting App</param-value>
+   </context-param>
+   
 </web-app>
