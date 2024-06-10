@@ -68,6 +68,21 @@
     <url-pattern>/result</url-pattern>
    </servlet-mapping>
    
+   <filter>
+     <filter-name>Security</filter-name>
+     <filter-class>com.sunbeam.Filter.LoggingFilter</filter-class>
+     
+   </filter>
+   <filter-mapping>
+      <filter-name>Security</filter-name>
+      <url-pattern>/candlist</url-pattern>
+  	  <url-pattern>/vote</url-pattern>
+  	  <url-pattern>/logout</url-pattern>
+      <url-pattern>/result</url-pattern> 	<url-pattern>/delcand</url-pattern>
+ 	  <url-pattern>/editcand</url-pattern>
+  	  <url-pattern>/announce*</url-pattern>
+   </filter-mapping>
+   
    <context-param>
     <param-name>AppTitle</param-name>
     <param-value>Shamal - Voting App</param-value>
