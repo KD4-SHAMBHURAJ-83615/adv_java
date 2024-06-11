@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,20 +8,23 @@
 <title>Insert title here</title>
 </head>
 <body>
- 
-    <jsp:useBean id="lb" class="com.sunbeam.beans.RegistrationBeam"/>
+ 		<h3>${ initParam.appTitle }</h3>
+    <jsp:useBean id="rb" class="com.sunbeam.beans.RegistrationBeam"/>
 	
-	<jsp:setProperty name="lb" property="firstname" param="fname"/>
-	<jsp:setProperty name="lb" property="lastname" param="lname"/>
-	<jsp:setProperty name="lb" property="date" param="dob"/>
-	<jsp:setProperty name="lb" property="email" param="email"/>
-	<jsp:setProperty name="lb" property="password" param="passwd"/>
-	<% lb.newRegister(); %>
-	<% if(lb.getUser() != null   ) { %>
-	 
-		<jsp:forward page="index.jsp"/> 
-	<% } else { %>
-	   Fill valid details.
-	<% } %>
+	<jsp:setProperty name="rb" property="*"/>
+	
+	<jsp:setProperty name="rb" property="status" value="0"/>
+	<jsp:setProperty  name="rb" property="role" value="voter"/>
+	${rb.newRegister() }
+	<c:choose>
+		<c:when test="${rb.count == 1}">
+			Registration successful.
+			<a href="index.jsp">Sign In</a>
+		</c:when>
+		<c:otherwise>
+			Registration failed.
+			<a href="newuser.jsp">Sign Up</a>
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>

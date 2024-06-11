@@ -4,16 +4,16 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Registration</title>
 </head>
 <body>
-     <h3>New User Register</h3>
+     <h3>${ initParam.appTitle }</h3>
    <form method="post" action=" register.jsp">
-   First Name: <input type="text" name="fname"> <br/><br/>
-   last name: <input type="text" name="lname"> <br/><br/>
-    Date of Birth: <input type="date" name="dob"> <br/><br/>
+   First Name: <input type="text" name="firstname"> <br/><br/>
+   last name: <input type="text" name="lastname"> <br/><br/>
+    Date of Birth: <input type="date" name="date"> <br/><br/>
    email: <input type="text" name="email"> <br/><br/>
-   Password: <input type="email" name="passwd">  <br/><br/>
+   Password: <input type="password" name="password">  <br/><br/>
   
   <input type="submit" value="Register"/>
   <a href="index.jsp">Sign In</a>

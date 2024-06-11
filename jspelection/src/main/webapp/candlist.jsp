@@ -3,6 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.sunbeam.beans.CandidateBeans" %>
 <%@ page import="com.sunbeam.pojos.Candidate" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,16 +11,19 @@
 <title>Candidates list</title>
 </head>
 <body>
-	<% 
-	CandidateBeans candidateListBean = new CandidateBeans();
-        candidateListBean.candidateList();
-        List<Candidate> list = candidateListBean.getList();
-    %>
-    <form method='post' action='vote'>
-        <% for(Candidate c : list) { %>
-            <input type='radio' name='candidate' value='<%= c.getId() %>'/> <%= c.getName() %> (<%= c.getParty() %>) <br/>
-        <% } %>
-        <input type='submit' value='Vote'/>
-    </form>
+	
+	
+	<h3>Online Voting</h3>
+	
+	Hello, ${lb.user.firstName} ${lb.user.lastName} <hr/>
+	<jsp:useBean id="clb" class="com.sunbeam.beans.CandidateBeans"/>
+	${ clb.fetchCandidates() }
+	<form method="post" action="vote.jsp">
+		<c:forEach var="c" items="${clb.candidateList}">
+			<input type="radio" name="candidate" value="${c.id}"/> ${c.name} -${c.party}  <br/>
+		</c:forEach>
+		<br/> <input type="submit" value="Vote"/>
+	</form>
+   
 </body>
 </html>

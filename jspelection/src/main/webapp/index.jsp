@@ -7,10 +7,10 @@
 <title>Login Page</title>
 </head>
 <body>
-    <h2>Login</h2>
+   <h3>${ initParam.appTitle }</h3>
 	<form method="post" action="login.jsp">
 		Email: <input type="text" name="email"/> <br/><br/>
-		Password: <input type="password" name="passwd"/> <br/><br/>
+		Password: <input type="password" name="password"/> <br/><br/>
 		<input type="submit" value="Sign In"/>
 		<a href="newuser.jsp">Register</a>
 	</form>

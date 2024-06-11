@@ -1,6 +1,8 @@
 package com.sunbeam.beans;
 
-import java.util.Date;
+
+
+import java.sql.Date;
 
 import com.sunbeam.daos.UserDao;
 import com.sunbeam.daos.UserDaoImpl;
@@ -12,17 +14,69 @@ public class RegistrationBeam {
 	private String email;
 	private String password;
 	private String date;
-	private String Role="voter";
-	private int status=0;
+	private String Role;
+	private int status;
 	private User user;
+	private int count;
+	
+	
+	
 	
 	
 	public RegistrationBeam() {
 		
 	}
 
-
+		
 	
+
+
+	public int getCount() {
+		return count;
+	}
+
+
+
+
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+
+
+
+
+	public String getRole() {
+		return Role;
+	}
+
+
+
+
+
+	public void setRole(String role) {
+		Role = role;
+	}
+
+
+
+
+
+	public int getStatus() {
+		return status;
+	}
+
+
+
+
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+
+
 
 
 	public String getFirstname() {
@@ -88,15 +142,10 @@ public class RegistrationBeam {
 	
 	public void newRegister() {
 		try (UserDao userDao = new UserDaoImpl()){
-			 user = new User();
-			user.setFirstName(firstname);
-			user.setLastName(lastname);
-			user.setEmail(email);
-			user.setPassword(password);
-			user.setStatus(status);
-			user.setRole(Role);
-			user.setBirth(java.sql.Date.valueOf(date));
-			int saved = userDao.save(user);
+			 Date dob = Date.valueOf(date);
+			 user= new User(status, firstname, lastname, email, password, dob, status, Role);
+			
+			count = userDao.save(user);
 			
 			
 		} catch (Exception e) {

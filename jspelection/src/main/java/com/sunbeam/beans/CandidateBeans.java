@@ -12,20 +12,22 @@ import com.sunbeam.pojos.Candidate;
 
 
 public class CandidateBeans {
-      private List <Candidate> list;
-      
-      public List<Candidate> getList(){
-    	  return list;
-      }
-
-	public void candidateList(){
-	  list = new ArrayList<Candidate>();
-	try (CandidateDao candDao = new CandidateDaoImpl()){
-		list=candDao.findAll();
-		
-	} catch (Exception e) {
-		e.printStackTrace();
+	private List<Candidate> candidateList;
+	public CandidateBeans() {
+		this.candidateList = new ArrayList<Candidate>();
 	}
+	public List<Candidate> getCandidateList() {
+		return candidateList;
+	}
+	public void setCandidateList(List<Candidate> candidateList) {
+		this.candidateList = candidateList;
+	}
+	public void fetchCandidates() {
+		try(CandidateDao candDao = new CandidateDaoImpl()) {
+			candidateList = candDao.findAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

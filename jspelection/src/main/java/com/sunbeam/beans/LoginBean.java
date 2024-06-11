@@ -45,10 +45,10 @@ public class LoginBean {
 			User user =userDao.findByEmail(email);
 			
 		if (user != null && user.getPassword().equals(password)) {
-			setUser(user);
+			this.user=user;
 			
 		}else {
-			System.out.println("login failed");
+			this.user=null;
 		}
 			
 		} catch (Exception e) {

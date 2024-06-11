@@ -1,22 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title></title>
 </head>
 <body>
-    <jsp:useBean id="lb" class="com.sunbeam.beans.LoginBean"/>
-	<jsp:setProperty name="lb" property="email" param="email"/>
-	<jsp:setProperty name="lb" property="password" param="passwd"/>
-	<% lb.authenticate(); %>
-	<% if(lb.getUser() != null   ) { %>
-	 
-		<jsp:forward page="candlist.jsp"/> 
-	<% } else { %>
-		Login Failed.
-	<% } %>
+    <h3>${ initParam.appTitle }</h3>
+	<jsp:useBean id="lb" class="com.sunbeam.beans.LoginBean" scope="session"/>
+	<jsp:setProperty name="lb" property="*"/>
+	${lb.authenticate() }
+	<c:choose>
+	  <c:when test="${lb.user.role == 'voter' }">
+	     <c:redirect url="candlist.jsp"/>  
+	  </c:when>
+	  <c:when test="${lb.user.role == 'admin' }">
+	   <c:redirect url="result.jsp"/>
+	  </c:when>
+	  
+	  <c:otherwise>
+			<h3>${initParam.appTitle}</h3>
+			Hello, ${lb.email} <br/>
+			Invalid email or password. <br/><br/>
+			<a href="index.jsp">Login Again</a>		
+		</c:otherwise>
+	
+	</c:choose>
+		
 </body>
 </html>
